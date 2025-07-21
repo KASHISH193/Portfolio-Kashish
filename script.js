@@ -1,4 +1,3 @@
-console.log('script.js is loaded!');
 // Scroll Animation – Elements appear smoothly as you scroll down
 function revealOnScroll() {
   const reveals = document.querySelectorAll('.reveal-on-scroll');
@@ -8,7 +7,7 @@ function revealOnScroll() {
     if (elementTop < windowHeight * 0.85) {
       el.classList.add('active');
     } else {
-      el.classList.remove('active');
+      el.classList.remove('actisve');
     }
   });
 }
@@ -119,6 +118,23 @@ document.querySelectorAll('.skill-bar').forEach(function(bar) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Hamburger menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+    // Close menu when a nav-link is clicked (mobile UX)
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  }
+
   var downloadBtn = document.querySelector('a.btn-secondary[download][href="resume_kashish_nankani.pdf"]');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', function(e) {
